@@ -5,6 +5,9 @@ on:
     branches:
       - master
 
+permissions:
+  contents: write
+
 jobs:
   check_version:
     runs-on: ubuntu-latest
@@ -84,3 +87,5 @@ jobs:
           files: |
             module.zip
             module.json
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
