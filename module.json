@@ -1,0 +1,51 @@
+{
+  "id": "hoatt-companion-module",
+  "title": "Hoatt Companion Module",
+  "description": "Homebrew components for playing in the World of Hoatt!",
+  "version": "0.1.7",
+  "compatibility": {
+    "minimum": "12",
+    "verified": "12"
+  },
+  "relationships": {
+    "systems": [
+      {
+        "id": "pf2e",
+        "type": "system",
+        "compatibility": {}
+      }
+    ]
+  },
+  "authors": [
+    {
+      "name": "Mateo Ayala",
+      "email": "mateoayat@gmail.com",
+      "discord": "mateayat",
+      "flags": {}
+    }
+  ],
+  "packs": [
+    {
+      "name": "deities",
+      "label": "Deities",
+      "path": "packs/deities",
+      "type": "Item",
+      "system": "pf2e",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    }
+  ],
+  "packFolders": [
+    {
+      "name": "Hoatt Companion Compendia",
+      "sorting": "a",
+      "packs": [
+        "deities"
+      ],
+      "color": "#d4af37",
+      "folders": []
+    }
+  ]
+}
