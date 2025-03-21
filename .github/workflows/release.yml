@@ -37,9 +37,11 @@ jobs:
           if [ "$OLD_VERSION" != "${{ steps.get_version.outputs.prop }}" ]; then
             echo "Version changed!"
             echo "changed=true" >> $GITHUB_ENV
+            echo "changed=true" >> $GITHUB_OUTPUT
           else
             echo "No version change detected."
             echo "changed=false" >> $GITHUB_ENV
+            echo "changed=false" >> $GITHUB_OUTPUT
           fi
 
       - name: Cleanup old module
