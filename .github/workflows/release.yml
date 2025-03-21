@@ -15,19 +15,19 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Get previous commit manifest.json
-        run: git show HEAD~1:manifest.json > old_manifest.json || echo '{}' > old_manifest.json
+      - name: Get previous commit module.json
+        run: git show HEAD~1:module.json > old_module.json || echo '{}' > old_module.json
 
-      - name: Extract version from current manifest.json
+      - name: Extract version from current module.json
         id: get_version
         uses: notiz-dev/github-action-json-property@release
         with:
-          path: "manifest.json"
+          path: "module.json"
           prop_path: "version"
 
-      - name: Extract version from previous manifest.json
+      - name: Extract version from previous module.json
         id: get_old_version
-        run: echo "OLD_VERSION=$(jq -r '.version // empty' old_manifest.json)" >> $GITHUB_ENV
+        run: echo "OLD_VERSION=$(jq -r '.version // empty' old_module.json)" >> $GITHUB_ENV
 
       - name: Compare versions
         id: version_check
@@ -40,8 +40,8 @@ jobs:
             echo "changed=false" >> $GITHUB_ENV
           fi
 
-      - name: Cleanup old manifest
-        run: rm -f old_manifest.json
+      - name: Cleanup old module
+        run: rm -f old_module.json
 
   release:
     needs: check_version
@@ -55,14 +55,14 @@ jobs:
         id: get_version
         uses: notiz-dev/github-action-json-property@release
         with:
-          path: "manifest.json"
+          path: "module.json"
           prop_path: "version"
 
-      - name: Update manifest.json for release
+      - name: Update module.json for release
         run: |
-          jq '.manifest = "https://github.com/${{ github.repository }}/releases/latest/download/manifest.json" |
-              .download = "https://github.com/${{ github.repository }}/releases/download/v${{ steps.get_version.outputs.prop }}/module.zip"' manifest.json > temp_manifest.json
-          mv temp_manifest.json manifest.json
+          jq '.manifest = "https://github.com/${{ github.repository }}/releases/latest/download/module.json" |
+              .download = "https://github.com/${{ github.repository }}/releases/download/v${{ steps.get_version.outputs.prop }}/module.zip"' module.json > temp_module.json
+          mv temp_module.json module.json
 
       - name: Create ZIP Archive
         run: |
@@ -79,4 +79,4 @@ jobs:
           prerelease: false
           files: |
             module.zip
-            manifest.json
+            module.json
