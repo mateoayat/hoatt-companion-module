@@ -2,7 +2,7 @@
   "id": "hoatt-companion-module",
   "title": "Hoatt Companion Module",
   "description": "Homebrew components for playing in the World of Hoatt!",
-  "version": "0.1.11",
+  "version": "0.2.0",
   "compatibility": {
     "minimum": "12",
     "verified": "12"
@@ -47,5 +47,8 @@
       "color": "#d4af37",
       "folders": []
     }
-  ]
+  ],
+  "url": "https://github.com/mateoayat/hoatt-companion-module",
+  "manifest": "Generated at release by GitHub Actions",
+  "download": "Generated at release by GitHub Actions"
 }
