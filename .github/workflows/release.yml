@@ -14,6 +14,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
 
       - name: Get previous commit module.json
         run: git show HEAD~1:module.json > old_module.json || echo '{}' > old_module.json
